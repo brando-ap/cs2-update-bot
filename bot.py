@@ -1,5 +1,6 @@
 import requests
 import lxml
+import re
 from bs4 import BeautifulSoup
 
 def get_html_and_parse(url):
@@ -23,8 +24,15 @@ def get_html_and_parse(url):
 
                 # Create a new line for each <li>
                 plain_text = description_soup.get_text(separator='\n')
+                lines = plain_text.split('\n')
+                for line in lines:
+                    # Match all [ HEADINGS ]
+                    if re.match("^\s*\[[^\]]*\].*", line):
+                        print(line)
+                    else:
+                        print("- " + line)
 
-                print(plain_text.strip()) 
+                #print(plain_text.strip()) 
             else:
                 print("No description found in the latest entry.")
         else:
