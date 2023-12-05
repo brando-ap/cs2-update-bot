@@ -19,19 +19,12 @@ def get_html_and_parse(url):
             if description:
                 description_text = description.get_text()
 
-                # Split the text on instances of '['
-                blocks = description_text.split('[', 1)
+                description_soup = BeautifulSoup(description_text, 'html.parser')
 
-                # Process and print each block
-                for block in blocks:
-                    # Skip empty blocks
-                    if not block.strip():
-                        continue
+                # Create a new line for each <li>
+                plain_text = description_soup.get_text(separator='\n')
 
-                    block_soup = BeautifulSoup(block, 'html.parser')
-                    plain_text = block_soup.get_text(separator='\n')  # Create a new line for each <li>
-
-                    print(plain_text.strip()) 
+                print(plain_text.strip()) 
             else:
                 print("No description found in the latest entry.")
         else:
