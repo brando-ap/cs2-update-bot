@@ -13,8 +13,6 @@ url = "https://raw.githubusercontent.com/IceQ1337/CS-RSS-Feed/master/feeds/updat
 
 @bot.event
 async def on_ready():
-    # print('logged in as: 2{}'.format(client.user.name))
-    # print('User ID: {}'.format(client.user.id))
     print("----------")
     print("bot is online")
 
@@ -55,12 +53,6 @@ def get_html_and_parse(url):
                     else:
                         formatted_lines.append("- " + line)
 
-            # for line in lines:
-            #     # Match all [ HEADINGS ]
-            #     if re.match("^\s*\[[^\]]*\].*", line):
-            #         print(line)
-            #     else:
-            #         print("- " + line)
             else:
                 print("No description found in the latest entry.")
         else:
