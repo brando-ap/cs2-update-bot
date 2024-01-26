@@ -1,4 +1,6 @@
 requests
 lxml
 bs4
-discord
+discord.py
+config
+asyncio
